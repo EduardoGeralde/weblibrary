@@ -1,11 +1,21 @@
 package com.eduardoportfolio.weblibrary.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+
+@Entity
 public class Product {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String subject;
 	private String title;
 	private String author;
+	@Lob
 	private String description;
 	private String company;
 	private int pages;
