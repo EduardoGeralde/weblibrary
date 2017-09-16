@@ -10,8 +10,8 @@ import javax.persistence.Lob;
 public class Product {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	private String subject;
 	private String title;
 	private String author;
@@ -20,10 +20,11 @@ public class Product {
 	private String company;
 	private int pages;
 	
-	public Long getId() {
+	
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getSubject() {
