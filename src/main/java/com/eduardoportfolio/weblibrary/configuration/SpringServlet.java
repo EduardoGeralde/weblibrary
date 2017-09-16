@@ -14,7 +14,7 @@ public class SpringServlet extends AbstractAnnotationConfigDispatcherServletInit
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class [] {AppWebConfiguration.class};
+		return new Class [] {AppWebConfiguration.class, JpaConfiguration.class};
 	}
 
 	@Override
