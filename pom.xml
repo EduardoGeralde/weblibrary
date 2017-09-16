@@ -16,88 +16,78 @@
     <spring.version>4.3.10.RELEASE</spring.version>
     <slf4j.version>1.7.25</slf4j.version>
   </properties>
-  
   <dependencies>
-  	<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
-	<dependency>
-	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-webmvc</artifactId>
-	    <version>${spring.version}</version>
-	</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
-	<dependency>
-	    <groupId>org.apache.tomcat</groupId>
-	    <artifactId>tomcat-servlet-api</artifactId>
-	    <version>8.5.20</version>
-	    <scope>provided</scope>
-	</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+  
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-servlet-api</artifactId>
+        <version>8.5.20</version>
+        <scope>provided</scope>
+    </dependency>
+    
 	<dependency>
 	    <groupId>javax.servlet.jsp</groupId>
-	    <artifactId>javax.servlet.jsp-api</artifactId>
-	    <version>2.3.1</version>
+	    <artifactId>jsp-api</artifactId>
+	    <version>2.1</version>
 	    <scope>provided</scope>
 	</dependency>
 	
-	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
 	<dependency>
 	    <groupId>javax.servlet.jsp.jstl</groupId>
 	    <artifactId>jstl-api</artifactId>
 	    <version>1.2</version>
 	    <exclusions>
-        	<exclusion>
-            	<groupId>javax.servlet</groupId>
-            	<artifactId>servlet-api</artifactId>
-        	</exclusion>
-    	</exclusions>
+	        <exclusion>
+	            <groupId>javax.servlet</groupId>
+	            <artifactId>servlet-api</artifactId>
+	        </exclusion>
+	    </exclusions>
 	</dependency>
 	
-  	<!-- https://mvnrepository.com/artifact/org.glassfish.web/jstl-impl -->
 	<dependency>
 	    <groupId>org.glassfish.web</groupId>
 	    <artifactId>jstl-impl</artifactId>
 	    <version>1.2</version>
 	    <exclusions>
-       		<exclusion>
-            	<groupId>javax.servlet</groupId>
-            	<artifactId>servlet-api</artifactId>
-        	</exclusion>
-    	</exclusions>
+	        <exclusion>
+	            <groupId>javax.servlet</groupId>
+	            <artifactId>servlet-api</artifactId>
+	        </exclusion>
+	    </exclusions>
 	</dependency>
-  	
-  	<!-- Logging -->
-  	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+	
+	<!-- Logging -->
 	<dependency>
 	    <groupId>org.slf4j</groupId>
 	    <artifactId>slf4j-api</artifactId>
 	    <version>${slf4j.version}</version>
 	</dependency>
 	
-	<!-- https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j -->
 	<dependency>
 	    <groupId>org.slf4j</groupId>
 	    <artifactId>jcl-over-slf4j</artifactId>
 	    <version>${slf4j.version}</version>
-	    <scope>runtime</scope>
-	</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
-	<dependency>
-	    <groupId>org.slf4j</groupId>
-	    <artifactId>slf4j-log4j12</artifactId>
-	    <version>${slf4j.version}</version>
-	    <scope>runtime</scope>
-	</dependency>
-	
-	<!-- https://mvnrepository.com/artifact/log4j/log4j -->
-	<dependency>
-	    <groupId>log4j</groupId>
-	    <artifactId>log4j</artifactId>
-	    <version>1.2.17</version>
-	    <scope>runtime</scope>
-	</dependency>
-  
-  </dependencies>
+	           <scope>runtime</scope>
+	    </dependency>
+	    
+	    <dependency>
+	        <groupId>org.slf4j</groupId>
+	        <artifactId>slf4j-log4j12</artifactId>
+	        <version>${slf4j.version}</version>
+	        <scope>runtime</scope>
+	    </dependency>
+	    
+	    <dependency>
+	        <groupId>log4j</groupId>
+	        <artifactId>log4j</artifactId>
+	        <version>1.2.16</version>
+	        <scope>runtime</scope>
+	    </dependency>
+	</dependencies>
 </project>
