@@ -6,11 +6,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.eduardoportfolio.weblibrary.controllers.HomeController;
-import com.eduardoportfolio.weblibrary.controllers.ProductsController;
 import com.eduardoportfolio.weblibrary.dao.ProductDao;
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {HomeController.class, ProductsController.class, ProductDao.class})
+@ComponentScan(basePackageClasses = {HomeController.class, ProductDao.class})
 public class AppWebConfiguration {
 	
 	@Bean
