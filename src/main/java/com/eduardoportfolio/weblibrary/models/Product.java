@@ -1,5 +1,9 @@
 package com.eduardoportfolio.weblibrary.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,8 +23,15 @@ public class Product {
 	private String description;
 	private String company;
 	private int pages;
+	@ElementCollection
+	private List<Price> prices = new ArrayList<Price>();
 	
-	
+	public List<Price> getPrices() {
+		return prices;
+	}
+	public void setPrices(List<Price> prices) {
+		this.prices = prices;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -68,7 +79,7 @@ public class Product {
 		return "[ book= "+ title +
 				" author= "+ author + 
 				" pages= "+ pages + 
-				"company= "+ company +" ]";
+				" company= "+ company +" ]";
 	}
 
 	
