@@ -28,10 +28,11 @@ public class ProductsController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public String save(Product product){
-		System.out.println("Saving product "+ product);
+	public ModelAndView save(Product product){
+		ModelAndView modelAndView = new ModelAndView("redirect:products");
+		modelAndView.addObject("sucess", "product successfully registered");
 		productDao.save(product);
-		return "products/ok";
+		return modelAndView;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
