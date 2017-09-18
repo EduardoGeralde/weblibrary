@@ -1,6 +1,7 @@
 package com.eduardoportfolio.weblibrary.models;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -23,9 +24,17 @@ public class Product {
 	private String description;
 	private String company;
 	private int pages;
+	private Date releaseDate;
 	@ElementCollection
 	private List<Price> prices = new ArrayList<Price>();
 	
+	
+	public Date getReleaseDate() {
+		return releaseDate;
+	}
+	public void setReleaseDate(Date releaseDate) {
+		this.releaseDate = releaseDate;
+	}
 	public List<Price> getPrices() {
 		return prices;
 	}
