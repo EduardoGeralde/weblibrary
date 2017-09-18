@@ -10,6 +10,7 @@
 </head>
 <body>
 
+	<!-- name attribute receiver the attribute type name, with the first letter in lowercase -->
 	<spring:hasBindErrors name="product">
 		<ul>
 			<c:forEach items="${errors.allErrors}" var="error">
@@ -18,7 +19,7 @@
 		</ul>
 	</spring:hasBindErrors>
 
-	<form action="/weblibrary/products" method="post">
+	<form action="${spring:mvcUrl("PC#save").build()}" method="post">
 	
 		<div>
 			<label for="subject">Book Subject</label>
