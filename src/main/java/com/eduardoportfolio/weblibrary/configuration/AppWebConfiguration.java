@@ -8,14 +8,17 @@ import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.eduardoportfolio.weblibrary.controllers.HomeController;
 import com.eduardoportfolio.weblibrary.dao.ProductDao;
+import com.eduardoportfolio.weblibrary.infra.FileSaver;
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {HomeController.class, ProductDao.class})
+@ComponentScan(basePackageClasses = {HomeController.class, ProductDao.class, FileSaver.class})
 public class AppWebConfiguration {
 	
 	@Bean
@@ -51,6 +54,13 @@ public class AppWebConfiguration {
 		//Finally, we register all converters in the FormattingConversionService object type
 		registrar.registerFormatters(conversionService);
 		return conversionService;
+	}
+	
+	@Bean
+	//The interface MultipartResolver is where define methods necessary for the initial treatment 
+	//of a request with multipart/form-data send mode, could be also CommonsMultipartResolver interface 
+	public MultipartResolver multipartResolver(){
+		return new StandardServletMultipartResolver();
 	}
 
 	
