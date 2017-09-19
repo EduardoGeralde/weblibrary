@@ -23,7 +23,9 @@
 
 	<!-- commandName receives the type of the parameter that has to be validate, and accessed 
 	by the path, with first letters lower case -->
-	<form:form action="${spring:mvcUrl('saveProduct').build()}" method="post" commandName="product">
+	<form:form action="${spring:mvcUrl('saveProduct').build()}" method="post" 
+																commandName="product"
+																enctype="mutipart/form-data">
 	
 		<div>
 			<label for="subject">Book Subject</label>
@@ -65,6 +67,12 @@
 			<label for="releaseDate">Release Date</label>
 			<form:input path="releaseDate" type="date"/>
 			<form:errors path="releaseDate"/>
+		</div>
+		
+		<div>
+			<label for="summary">Book Summary</label>
+			<input type="file" name="summary"/>
+			<form:errors path="summaryPath"/>
 		</div>
 		
 		<div>
