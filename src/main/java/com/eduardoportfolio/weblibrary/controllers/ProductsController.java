@@ -17,36 +17,36 @@ import com.eduardoportfolio.weblibrary.models.Product;
 
 @Controller
 @Transactional
-@RequestMapping("products")
+@RequestMapping("/products")
 public class ProductsController {
 	
 	@Autowired
 	private ProductDao productDao;
 	
 	@RequestMapping("form")
-	public ModelAndView form(){
+	public ModelAndView form(Product product){
 		ModelAndView modelAndView = new ModelAndView("products/book-form");
 		modelAndView.addObject("types", BookType.values());
 		return modelAndView;
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST, name="saveProduct")
 	public ModelAndView save(@Valid Product product, 
 								BindingResult bindingResult, 
 								RedirectAttributes redirectAttributes){
 		if(bindingResult.hasErrors()){
-			return form();
+			return form(product);
 		}
 		productDao.save(product);
 		//add an object just for the next request, can be accessed with EL ${sucess}
 		//Ex.${sucess} in the view
-		redirectAttributes.addFlashAttribute("sucess", "product successfully registered");
-		return new ModelAndView("redirect:products");
+		redirectAttributes.addFlashAttribute("success", "product successfully registered");
+		return new ModelAndView("redirect:/products");
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView list(){
-		ModelAndView modelAndView = new ModelAndView("product/list");
+		ModelAndView modelAndView = new ModelAndView("products/list");
 		modelAndView.addObject("products", productDao.list());
 		return modelAndView;
 	}
