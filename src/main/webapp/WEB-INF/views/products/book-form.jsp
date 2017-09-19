@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<!-- name attribute receive the attribute type, with the first letter in lowercase -->
+	<!-- name attribute receive the attribute type, with the first letter in lowercase
 	<spring:hasBindErrors name="product">
 		<ul>
 			<c:forEach items="${errors.allErrors}" var="error">
@@ -19,10 +19,11 @@
 			</c:forEach>
 		</ul>
 	</spring:hasBindErrors>
+	-->
 
-	<!-- commandName receives the type of the parameter that has to be validate, with first
-	letters lowercase -->
-	<form:form action="${spring:mvcUrl("PC#save").build()}" method="post"commandName="product">
+	<!-- commandName receives the type of the parameter that has to be validate, and accessed 
+	by the path, with first letters lower case -->
+	<form:form action="${spring:mvcUrl('saveProduct').build()}" method="post" commandName="product">
 	
 		<div>
 			<label for="subject">Book Subject</label>
@@ -62,7 +63,7 @@
 		
 		<div>
 			<label for="releaseDate">Release Date</label>
-			<form:input path="releaseDate" type=date/>
+			<form:input path="releaseDate" type="date"/>
 			<form:errors path="releaseDate"/>
 		</div>
 		
@@ -70,8 +71,8 @@
 			<c:forEach items="${types}" var="bookType" varStatus="status">
 				<div>
 					<label for="price_${bookType}">${bookType}</label>
-					<form:input type="text" name="prices[${status.index}].value" id="price_${bookType}"/>
-					<form:input type="hidden" name="prices[${status.index}].bookType" value="${bookType}"/>
+					<input type="text" name="prices[${status.index}].value" id="price_${bookType}"/>
+					<input type="hidden" name="prices[${status.index}].bookType" value="${bookType}"/>
 				</div>
 			</c:forEach>
 		</div>
