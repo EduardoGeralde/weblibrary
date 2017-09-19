@@ -14,7 +14,7 @@
 				<td>Book Title</td>
 				<td>Values</td>
 			</tr>
-				<c:forEach items="${products}" var="products">
+				<c:forEach items="${products}" var="product">
 					<tr>
 						<td>${product.title}</td>
 						<td>
