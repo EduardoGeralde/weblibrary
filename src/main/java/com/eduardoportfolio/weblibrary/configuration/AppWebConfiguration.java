@@ -4,6 +4,10 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.format.datetime.DateFormatter;
+import org.springframework.format.datetime.DateFormatterRegistrar;
+import org.springframework.format.support.DefaultFormattingConversionService;
+import org.springframework.format.support.FormattingConversionService;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -29,10 +33,24 @@ public class AppWebConfiguration {
 		ReloadableResourceBundleMessageSource bundle = new ReloadableResourceBundleMessageSource();
 		bundle.setBasename("/WEB-INF/messages");
 		bundle.setDefaultEncoding("UTF-8");
-		//Tipic development environment configuration, because we don't want refresh the server
+		//Typical development environment configuration, because we don't want refresh the server
 		//always when this file change
 		bundle.setCacheSeconds(1);
 		return bundle;
+	}
+	
+	@Bean
+	//In this Bean, we tell Spring always use this date format. This method has to have this name
+	public FormattingConversionService mvcConversionService(){
+		DefaultFormattingConversionService conversionService = 
+												new DefaultFormattingConversionService(true);
+		//Some conversions of this class Calendar>Long/Long>Calendar/Date>Calendar/Calendar>Date
+		DateFormatterRegistrar registrar = new DateFormatterRegistrar();
+		//Here we inform which format that we want
+		registrar.setFormatter(new DateFormatter("yyyy-MM-dd"));
+		//Finally, we register all converters in the FormattingConversionService object type
+		registrar.registerFormatters(conversionService);
+		return conversionService;
 	}
 
 	
