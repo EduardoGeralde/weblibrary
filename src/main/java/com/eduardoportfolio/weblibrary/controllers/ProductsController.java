@@ -1,6 +1,5 @@
 package com.eduardoportfolio.weblibrary.controllers;
 
-import javax.servlet.http.Part;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -45,7 +44,7 @@ public class ProductsController {
 		}
 		System.out.println(summary.getName()+" ; "+summary.getOriginalFilename());
 		String webPath = fileSaver.write("uploaded-images", summary);
-		product.setSummaryWebPath(webPath);
+		product.setSummaryPath(webPath);
 		productDao.save(product);
 		//add an object just for the next request, can be accessed with EL ${sucess}
 		//Ex.${sucess} in the view
