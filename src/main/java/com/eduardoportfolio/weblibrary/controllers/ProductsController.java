@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardoportfolio.weblibrary.dao.ProductDao;
-import com.eduardoportfolio.weblibrary.infra.FileSaver;
+import com.eduardoportfolio.weblibrary.infra.AmazonFileSaver;
 import com.eduardoportfolio.weblibrary.models.BookType;
 import com.eduardoportfolio.weblibrary.models.Product;
 
@@ -25,7 +25,7 @@ public class ProductsController {
 	@Autowired
 	private ProductDao productDao;
 	@Autowired
-	private FileSaver fileSaver;
+	private AmazonFileSaver fileSaver;
 	
 	@RequestMapping("form")
 	public ModelAndView form(Product product){
@@ -42,7 +42,7 @@ public class ProductsController {
 		if(bindingResult.hasErrors()){
 			return form(product);
 		}
-		System.out.println(summary.getName()+" ; "+summary.getOriginalFilename());
+
 		String webPath = fileSaver.write("uploaded-images", summary);
 		product.setSummaryPath(webPath);
 		productDao.save(product);
