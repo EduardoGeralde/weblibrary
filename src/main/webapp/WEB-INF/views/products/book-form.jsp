@@ -25,7 +25,7 @@
 	by the path, with first letters lower case -->
 	<form:form action="${spring:mvcUrl('saveProduct').build()}" method="post" 
 																commandName="product"
-																enctype="mutipart/form-data">
+																enctype="multipart/form-data">
 	
 		<div>
 			<label for="subject">Book Subject</label>
