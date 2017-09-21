@@ -1,5 +1,6 @@
 package com.eduardoportfolio.weblibrary.models;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -107,6 +108,12 @@ public class Product {
 				" author= "+ author + 
 				" pages= "+ pages + 
 				" company= "+ company +" ]";
+	}
+	public BigDecimal priceFor(BookType bookType) {
+		return prices  
+						.stream()
+						.filter(price -> price.getBookType().equals(bookType))
+						.findFirst().get().getValue();
 	}
 
 	
