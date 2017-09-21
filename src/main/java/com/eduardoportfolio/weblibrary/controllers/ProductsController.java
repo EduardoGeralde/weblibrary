@@ -60,9 +60,12 @@ public class ProductsController {
 		return modelAndView;
 	}
 	
-	@RequestMapping("/{id}")
+	@RequestMapping("/{id}") //We can pass primitive types, String, Date, Calendar
+	//If our books were separated into categories, we can do just like that
+	//@RequestMapping("/{categoryId}/{productId}")
+	//public ModelAndView show(@PathVariable("categoryId") Integer categoryId, @PathVariable("productId") Integer id){
 	public ModelAndView show(@PathVariable("id") Integer id){
-		ModelAndView modelAndView = new ModelAndView("products/show");
+		ModelAndView modelAndView = new ModelAndView("products/showBook");
 		Product product = productDao.find(id);
 		modelAndView.addObject("product", product);
 		return modelAndView;
