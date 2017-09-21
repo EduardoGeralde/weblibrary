@@ -22,8 +22,8 @@
 		<ul class="container">
 			<li class="category"><a href="http://www.casadocodigo.com.br">Home</a>
 			<li class="category"><a href="/collections/livros-de-agile">
-									<fmt:message key="navigation.category.agile"/>
-										<spring:message code="navigation.category.agile"/> </a>
+					<fmt:message key="navigation.category.agile"/>
+					<spring:message code="navigation.category.agile"/> </a>
 			<li class="category"><a href="/collections/livros-de-front-end">
 					<fmt:message key="navigation.category.front"/> </a>
 			<li class="category"><a href="/collections/livros-de-games">
@@ -33,7 +33,8 @@
 			<li class="category"><a href="/collections/livros-de-mobile">
 					<fmt:message key="navigation.category.mobile"/> </a>
 			<li class="category"><a href="/collections/livros-desenvolvimento-web"> 
-													<fmt:message key="navigation.category.web"/></a>
-			<li class="category"><a href="/collections/outros"> <fmt:message key="navigation.category.others"/></a>
+					<fmt:message key="navigation.category.web"/></a>
+			<li class="category"><a href="/collections/outros"> 
+					<fmt:message key="navigation.category.others"/></a>
 		</ul>
 	</nav>
