@@ -16,9 +16,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.eduardoportfolio.weblibrary.controllers.HomeController;
 import com.eduardoportfolio.weblibrary.dao.ProductDao;
 import com.eduardoportfolio.weblibrary.infra.AmazonFileSaver;
+import com.eduardoportfolio.weblibrary.models.ShoppingCart;
 
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {HomeController.class, ProductDao.class, AmazonFileSaver.class})
+@ComponentScan(basePackageClasses = {HomeController.class, ProductDao.class, 
+														AmazonFileSaver.class, ShoppingCart.class})
 public class AppWebConfiguration {
 	
 	@Bean
