@@ -28,6 +28,10 @@ public class AppWebConfiguration {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
+		//Exposes all managed beans through EL
+		//resolver.setExposeContextBeansAsAttributes(true);
+		//Expose only a specific managed bean through EL
+		resolver.setExposedContextBeanNames("shoppingCart");
 		return resolver;
 	}
 	
