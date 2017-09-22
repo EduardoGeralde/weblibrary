@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
+import com.eduardoportfolio.weblibrary.models.BookType;
 import com.eduardoportfolio.weblibrary.models.Product;
 
 @Repository
@@ -25,11 +26,20 @@ public class ProductDao {
 																Product.class).getResultList();
 	}
 	
-	public Product find(Integer id){
-		
+	public Product find(Integer id) {
 		TypedQuery<Product> query = manager.createQuery(
-									"select distinct (p) from Product p join fetch p.prices where p.id=:id", 
-									Product.class).setParameter("id", id);
+									"select distinct(p) from Product p join fetch p.prices where p.id = :id",
+																		Product.class).setParameter("id", id);
+		return query.getSingleResult();
+	}
+	
+	public Product findBy(Integer id, BookType bookType) {
+		TypedQuery<Product> query = manager
+				.createQuery(
+						"select p from Product p join fetch p.prices price where p.id = :id and price.bookType = :bookType",
+						Product.class);
+		query.setParameter("id", id);
+		query.setParameter("bookType", bookType);
 		return query.getSingleResult();
 	}
 	
