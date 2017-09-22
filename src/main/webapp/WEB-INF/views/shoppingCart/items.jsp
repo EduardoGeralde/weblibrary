@@ -89,7 +89,7 @@
 					<td colspan="2"><form:form
 							action="${spring:mvcUrl('PC#checkout').build()}" method="post">
 							<input type="submit" class="checkout" name="checkout"
-								value="Finalizar compra " id="checkout" />
+								value="Finalizar compra" id="checkout" />
 						</form:form></td>
 					<td class="numeric-cell">${shoppingCart.total}</td>
 					<td></td>
