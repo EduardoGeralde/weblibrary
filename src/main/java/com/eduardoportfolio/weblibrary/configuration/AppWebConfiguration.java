@@ -1,5 +1,9 @@
 package com.eduardoportfolio.weblibrary.configuration;
 
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCache;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,6 +24,7 @@ import com.eduardoportfolio.weblibrary.infra.AmazonFileSaver;
 import com.eduardoportfolio.weblibrary.models.ShoppingCart;
 
 @EnableWebMvc
+@EnableCaching
 @ComponentScan(basePackageClasses = {HomeController.class, ProductDao.class, 
 														AmazonFileSaver.class, ShoppingCart.class})
 public class AppWebConfiguration {
@@ -74,6 +79,13 @@ public class AppWebConfiguration {
 	//This object type offers many methods, that we can use to realize many types of request
 	public RestTemplate restTemplate(){
 		return new RestTemplate();
+	}
+	
+	//Class responsible for effectively hold the objects that have to be cache
+	//The ConcurrentMapCacheManager is a simple implementation, we have another ones
+	@Bean
+	public CacheManager cacheManager(){
+		return new ConcurrentMapCacheManager();
 	}
 	
 }
