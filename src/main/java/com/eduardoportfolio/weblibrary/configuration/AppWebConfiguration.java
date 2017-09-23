@@ -15,6 +15,7 @@ import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartResolver;
@@ -24,9 +25,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.eduardoportfolio.weblibrary.controllers.CustomXMLViewResolver;
 import com.eduardoportfolio.weblibrary.controllers.HomeController;
 import com.eduardoportfolio.weblibrary.dao.ProductDao;
 import com.eduardoportfolio.weblibrary.infra.AmazonFileSaver;
+import com.eduardoportfolio.weblibrary.models.Product;
 import com.eduardoportfolio.weblibrary.models.ShoppingCart;
 import com.eduardoportfolio.weblibrary.viewResolver.JsonViewResolver;
 import com.google.common.cache.CacheBuilder;
@@ -38,6 +41,32 @@ import com.google.common.cache.CacheBuilder;
 public class AppWebConfiguration {
 	
 	@Bean
+	//Tells Spring that he has to decide which view resolver to use based in the Accept
+	public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager){
+		List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
+		resolvers.add(internalResourceViewResolver());
+		resolvers.add(new JsonViewResolver());
+		resolvers.add(getMarshallingXmlViewResolver());
+		
+		ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
+		resolver.setViewResolvers(resolvers);
+		resolver.setContentNegotiationManager(manager);
+		return resolver;
+	}
+	
+	@Bean
+	public CustomXMLViewResolver getMarshallingXmlViewResolver() {
+		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+		marshaller.setClassesToBeBound(Product.class);
+//		XStreamMarshaller marshaller = new XStreamMarshaller();
+//		HashMap<String, Class<?>> keys = new HashMap<String,Class<?>>();
+//		keys.put("product", Product.class);
+//		keys.put("price", Price.class);
+//		marshaller.setAliases(keys);
+		return new CustomXMLViewResolver(marshaller);
+	}
+	
+	@Bean
 	public InternalResourceViewResolver internalResourceViewResolver(){
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
@@ -46,19 +75,6 @@ public class AppWebConfiguration {
 		//resolver.setExposeContextBeansAsAttributes(true);
 		//Expose only a specific managed bean through EL
 		resolver.setExposedContextBeanNames("shoppingCart");
-		return resolver;
-	}
-	
-	@Bean
-	//Tells Spring that he has to decide which view resolver to use based in the Accept
-	public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager){
-		List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
-		resolvers.add(internalResourceViewResolver());
-		resolvers.add(new JsonViewResolver());
-		
-		ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
-		resolver.setViewResolvers(resolvers);
-		resolver.setContentNegotiationManager(manager);
 		return resolver;
 	}
 	
