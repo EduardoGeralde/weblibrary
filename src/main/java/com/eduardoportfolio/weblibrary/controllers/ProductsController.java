@@ -1,15 +1,19 @@
 package com.eduardoportfolio.weblibrary.controllers;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -37,6 +41,10 @@ public class ProductsController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, name="saveProduct")
+	//Invalid a certain cache region when a new book is registered, forcing actualization
+	//We can pass an array in the value attribute, and we can actualize an specific or all values setting in
+	//the allEntries attribute
+	@CacheEvict (value="books", allEntries=true)
 	public ModelAndView save(@Valid Product product,
 								MultipartFile summary,
 								BindingResult bindingResult, 
@@ -54,8 +62,8 @@ public class ProductsController {
 		return new ModelAndView("redirect:/products");
 	}
 	
-	
 	@RequestMapping(method=RequestMethod.GET)
+	//Make the cache of the action result and give its a region name
 	@Cacheable (value="books")
 	public ModelAndView list(){
 		ModelAndView modelAndView = new ModelAndView("products/list");
@@ -63,8 +71,17 @@ public class ProductsController {
 		return modelAndView;
 	}
 	
+	/*
+	//Returns Json file when products/json is accessed
+	@RequestMapping(method = RequestMethod.GET, value="json")
+	//Informs that the method return is to be used directly in the response body
+	@ResponseBody
+	public List<Product> listJSon(){
+		return productDao.list();
+	}
+	*/
+	
 	@RequestMapping("/{id}") //We can pass primitive types, String, Date, Calendar
-	//If our books were separated into categories, we can do just like that
 	//@RequestMapping("/{categoryId}/{productId}")
 	//public ModelAndView show(@PathVariable("categoryId") Integer categoryId, @PathVariable("productId") Integer id){
 	public ModelAndView show(@PathVariable("id") Integer id){
