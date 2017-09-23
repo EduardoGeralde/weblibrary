@@ -1,8 +1,11 @@
 package com.eduardoportfolio.weblibrary.configuration;
 
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
+import org.springframework.cache.guava.GuavaCacheManager;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -21,6 +24,7 @@ import com.eduardoportfolio.weblibrary.controllers.HomeController;
 import com.eduardoportfolio.weblibrary.dao.ProductDao;
 import com.eduardoportfolio.weblibrary.infra.AmazonFileSaver;
 import com.eduardoportfolio.weblibrary.models.ShoppingCart;
+import com.google.common.cache.CacheBuilder;
 
 @EnableWebMvc
 @EnableCaching
@@ -82,9 +86,19 @@ public class AppWebConfiguration {
 	
 	//Class responsible for effectively hold the objects that have to be cache
 	//The ConcurrentMapCacheManager is a simple implementation, we have another ones
+	//@Bean
+	//public CacheManager cacheManager(){
+	//	return new ConcurrentMapCacheManager();
+	//}
+	
+	//Guava Cache implementation from Google
 	@Bean
 	public CacheManager cacheManager(){
-		return new ConcurrentMapCacheManager();
+		CacheBuilder<Object, Object> builder = CacheBuilder.newBuilder().maximumSize(100)
+																		.expireAfterAccess(5, TimeUnit.MINUTES);
+		GuavaCacheManager cacheManager = new GuavaCacheManager();
+		cacheManager.setCacheBuilder(builder);
+		return cacheManager;
 	}
 	
 }
