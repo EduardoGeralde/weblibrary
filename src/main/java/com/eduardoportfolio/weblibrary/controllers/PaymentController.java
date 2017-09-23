@@ -1,6 +1,7 @@
 package com.eduardoportfolio.weblibrary.controllers;
 
 import java.math.BigDecimal;
+import java.util.concurrent.Callable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,16 +23,21 @@ public class PaymentController {
 	RestTemplate restTemplate;
 	
 	@RequestMapping(value="checkout", method=RequestMethod.POST)
-	public String checkout(){
+	//Analog to Runnable, but allow us give a return
+	public Callable<String> checkout(){
 		
-		BigDecimal total = shoppingCart.getTotal();
+		return() -> {
 		
-		String uriToPay = "http://book-payment.herokuapp.com/payment";
-		try{
-			String response = restTemplate.postForObject(uriToPay, new PaymentData(total), String.class);
-			return "payment/payment-success";
-		} catch (HttpClientErrorException exception){
-			return "payment/payment-error";
-		}
+			BigDecimal total = shoppingCart.getTotal();
+			
+			String uriToPay = "http://book-payment.herokuapp.com/payment";
+			try{
+				String response = restTemplate.postForObject(uriToPay, new PaymentData(total), String.class);
+				return "payment/payment-success";
+			} catch (HttpClientErrorException exception){
+				return "payment/payment-error";
+			}
+		};
 	}
+	
 }
