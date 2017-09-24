@@ -9,17 +9,19 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class SpringServlet extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
+	//Load classes before Spring MVC Servlet, inside a Listener, that is read when the server goes up, is the
+	//ContextLoadListener
 	protected Class<?>[] getRootConfigClasses() {
-		// TODO Auto-generated method stub
-		return new Class [] {AppWebConfiguration.class, 
-												JpaConfiguration.class, 
-														AmazonConfiguration.class};
+	//We put the security filter here, because it runs before the Spring MVC Servlet
+		return new Class [] {SecurityConfiguration.class};
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class [] {};
+		return new Class [] {AppWebConfiguration.class, 
+												JpaConfiguration.class, 
+																AmazonConfiguration.class};
 	}
 
 	@Override
