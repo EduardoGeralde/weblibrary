@@ -25,18 +25,20 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.eduardoportfolio.weblibrary.controllers.CustomXMLViewResolver;
 import com.eduardoportfolio.weblibrary.controllers.HomeController;
 import com.eduardoportfolio.weblibrary.dao.ProductDao;
+import com.eduardoportfolio.weblibrary.dao.RoleDao;
+import com.eduardoportfolio.weblibrary.dao.UserDao;
 import com.eduardoportfolio.weblibrary.infra.AmazonFileSaver;
 import com.eduardoportfolio.weblibrary.models.Product;
 import com.eduardoportfolio.weblibrary.models.ShoppingCart;
+import com.eduardoportfolio.weblibrary.viewResolver.CustomXMLViewResolver;
 import com.eduardoportfolio.weblibrary.viewResolver.JsonViewResolver;
 import com.google.common.cache.CacheBuilder;
 
 @EnableWebMvc
 @EnableCaching
-@ComponentScan(basePackageClasses = {HomeController.class, ProductDao.class, 
+@ComponentScan(basePackageClasses = {HomeController.class, ProductDao.class, RoleDao.class, UserDao.class,
 														AmazonFileSaver.class, ShoppingCart.class})
 public class AppWebConfiguration {
 	
