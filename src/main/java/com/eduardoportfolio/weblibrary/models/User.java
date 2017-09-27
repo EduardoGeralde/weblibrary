@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -17,11 +18,20 @@ public class User implements UserDetails {
 
 	@Id
 	private String login;
+	@NotBlank
 	private String password;
+	@NotBlank
 	private String name;
 	@ManyToMany(fetch=FetchType.EAGER)
 	private List<Role> roles = new ArrayList<>();
 	
+	public String getLogin() {
+		return login;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
 
 	public void setLogin(String login) {
 		this.login = login;
