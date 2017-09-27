@@ -13,15 +13,15 @@ public class SpringServlet extends AbstractAnnotationConfigDispatcherServletInit
 	//ContextLoadListener
 	protected Class<?>[] getRootConfigClasses() {
 	//We put the security filter here, because it runs before the Spring MVC Servlet
-		return new Class [] {SecurityConfiguration.class};
+		return new Class [] {SecurityConfiguration.class, AppWebConfiguration.class, 
+																JpaConfiguration.class, 
+																		AmazonConfiguration.class};
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class [] {AppWebConfiguration.class, 
-												JpaConfiguration.class, 
-																AmazonConfiguration.class};
+		return new Class [] {};
 	}
 
 	@Override
