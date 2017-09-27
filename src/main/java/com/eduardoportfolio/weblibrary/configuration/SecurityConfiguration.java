@@ -37,6 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		//It says, beside user is logged, he has to have ADMIN role to have the permission
 		.antMatchers("/products/form").hasRole("ADMIN")
 		.antMatchers("/shopping/**").permitAll()
+		.antMatchers("/register/**").permitAll()
 		//If the address /products is accessed through POST method, the access is only released with ADMIN role
 		.antMatchers(HttpMethod.POST, "/products").hasRole("ADMIN")
 		//Here we say, all the others address that begin with /products/ is 
