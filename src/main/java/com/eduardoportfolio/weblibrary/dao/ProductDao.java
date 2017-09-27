@@ -21,6 +21,10 @@ public class ProductDao {
 		manager.persist(product);
 	}
 	
+	public void delete(Product product){
+		manager.remove(product);
+	}
+	
 	public List<Product> list(){
 		return manager.createQuery("select distinct(p) from Product p join fetch p.prices",
 																Product.class).getResultList();
