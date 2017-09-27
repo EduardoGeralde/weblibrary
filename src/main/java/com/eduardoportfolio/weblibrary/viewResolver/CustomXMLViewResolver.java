@@ -1,4 +1,4 @@
-package com.eduardoportfolio.weblibrary.controllers;
+package com.eduardoportfolio.weblibrary.viewResolver;
 
 import java.util.Locale;
 
