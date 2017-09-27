@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.eduardoportfolio.weblibrary.models.User;
@@ -36,6 +37,9 @@ public class UserDao implements UserDetailsService {
 	}
 	
 	public void save(User user){
+		BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
+		String encodedPassword = bc.encode(user.getPassword());
+		user.setPassword(encodedPassword);
 		manager.persist(user);
 	}
 	
