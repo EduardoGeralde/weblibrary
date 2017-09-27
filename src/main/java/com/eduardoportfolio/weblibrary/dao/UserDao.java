@@ -12,9 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import com.eduardoportfolio.weblibrary.models.User;
 
-
-
-
 @Repository
 public class UserDao implements UserDetailsService {
 
@@ -32,9 +29,17 @@ public class UserDao implements UserDetailsService {
 		List<User> users = manager.createQuery(jpql, User.class)
 														.setParameter("login", userName).getResultList();
 		if(users.isEmpty()){
-			throw new UsernameNotFoundException ("The user "+ userName + "don't exist !");
+			throw new UsernameNotFoundException ("The user "+ userName + "is not found !");
 		}
 		
 		return users.get(0);
+	}
+	
+	public void save(User user){
+		manager.persist(user);
+	}
+	
+	public void delete(User user){
+		manager.remove(user);
 	}
 }
