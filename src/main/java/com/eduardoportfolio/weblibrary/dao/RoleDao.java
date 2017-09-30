@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +26,12 @@ public class RoleDao {
 	
 	public List<Role> list(){
 		return manager.createQuery("select p from Role p", Role.class).getResultList();
+	}
+	
+	public Role getRole(String name){
+		TypedQuery<Role> query = manager.createQuery("select p from Role p where p.name = :name", Role.class)
+																					.setParameter("name", name);
+		return query.getSingleResult();
 	}
 
 }
