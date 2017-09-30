@@ -9,7 +9,7 @@
 <title>User Registration</title>
 </head>
 <body>
-	<form:form action="${spring:mvcUrl('saveUser').build()}" method="post" commandName="user">
+	<form:form servletRelativeAction="${spring:mvcUrl('saveUser').build()}" method="post" commandName="user">
 	
 		<div>
 			<label for="name">User name</label>

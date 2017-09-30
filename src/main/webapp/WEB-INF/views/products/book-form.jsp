@@ -22,9 +22,9 @@
 
 	<!-- commandName receives the type of the parameter that has to be validate, and accessed 
 	by the path, with first letters lower case -->
-	<form:form action="${spring:mvcUrl('saveProduct').build()}" method="post" 
-																commandName="product"
-																enctype="multipart/form-data">
+	<form:form servletRelativeAction="${spring:mvcUrl('saveProduct').build()}" method="post" 
+																				commandName="product"
+																				enctype="multipart/form-data">
 	
 		<div>
 			<label for="subject">Book Subject</label>

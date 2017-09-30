@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<form:form action="${spring:mvcUrl('saveRole').build()}" method="post" commandName="role">
+	<form:form servletRelativeAction="${spring:mvcUrl('saveRole').build()}" method="post" commandName="role">
 	
 		<table>
 			<tr>
