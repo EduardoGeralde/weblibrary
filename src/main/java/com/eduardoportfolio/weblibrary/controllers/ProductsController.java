@@ -69,7 +69,7 @@ public class ProductsController {
 	}
 	
 	/*
-	//Returns Json file when products/json is accessed
+	//Returns Json/XML file when products/json is accessed
 	@RequestMapping(method = RequestMethod.GET, value="json")
 	//Informs that the method return is to be used directly in the response body
 	@ResponseBody
