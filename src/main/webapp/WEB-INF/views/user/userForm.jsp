@@ -30,19 +30,7 @@
 		</div>
 		
 		<div>
-			<c:forEach items="${roleList}" var="role" varStatus="status">
-				<div>
-					<label for="role_${role}">${role}</label>
-					<input type="checkbox" value="${role}" name="roles[${status.index}].name" id="role_${role}"/>
-				</div>
-			</c:forEach>
-			<!-- 
-			<c:forEach items="${roleList}" var="role">
-				<tr>
-					<td><form:checkbox path="roles" value="roles[${status.index}].name" label="${role.name}"/></td>
-				</tr>
-			</c:forEach>
-			-->
+			<form:checkboxes path="roles" items="${roleList}" itemLabel="name" itemValue="name"/>
 		</div>
 		
 		<div>
