@@ -38,13 +38,10 @@ public class ProductDao {
 	}
 	
 	public Product findBy(Integer id, BookType bookType) {
-		TypedQuery<Product> query = manager
-				.createQuery(
-						"select p from Product p join fetch p.prices price where p.id = :id and price.bookType = :bookType",
-						Product.class);
+		String jpql = "select p from Product p join fetch p.prices price where p.id = :id and price.bookType = :bookType";
+		TypedQuery<Product> query = manager.createQuery(jpql, Product.class);
 		query.setParameter("id", id);
 		query.setParameter("bookType", bookType);
 		return query.getSingleResult();
 	}
-	
 }
