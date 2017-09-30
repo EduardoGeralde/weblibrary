@@ -36,14 +36,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		//It says, beside user is logged, he has to have ADMIN role to have the permission
 		.antMatchers("/products/form").hasRole("ADMIN")
 		.antMatchers("/shopping/**").permitAll()
-		.antMatchers("/register/**").permitAll()
 		//If the address /products is accessed through POST method, the access is only released with ADMIN role
 		.antMatchers(HttpMethod.POST, "/products").hasRole("ADMIN")
 		.antMatchers(HttpMethod.POST, "/register").hasRole("ADMIN")
 		//Here we say, all the others address that begin with /products/ is 
 		.antMatchers("/products/**").permitAll()
+		.antMatchers("/register/**").permitAll()
 		//All the rest is only released with user authenticated
 		.anyRequest().authenticated()
-		.and().formLogin();
+		//With .loginPage, we redirect to our login page. We need call permitall() to tell that  this address is
+		//allowed for everyone
+		.and().formLogin().loginPage("/login").permitAll();
 	}
 }
