@@ -1,26 +1,26 @@
 package com.eduardoportfolio.weblibrary.controllers;
 
+
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eduardoportfolio.weblibrary.dao.RoleDao;
 import com.eduardoportfolio.weblibrary.models.Role;
 
-
-
-
-@Transactional
 @Controller
+@Transactional
 @RequestMapping("/register")
-//@Scope(value=WebApplicationContext.SCOPE_REQUEST)
+@Scope(WebApplicationContext.SCOPE_REQUEST)
 public class RoleController {
 	
 	@Autowired
@@ -33,7 +33,6 @@ public class RoleController {
 		return modelAndView;
 	}
 	
-
 	@RequestMapping(value="saveRole", method=RequestMethod.POST, name="saveRole")
 	public ModelAndView saveRole(@Valid Role role, BindingResult bindingResult, 
 															RedirectAttributes redirectAttributes){
