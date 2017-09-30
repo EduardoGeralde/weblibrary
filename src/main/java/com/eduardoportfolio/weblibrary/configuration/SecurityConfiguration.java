@@ -15,12 +15,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 //This class inherits all the infrastructure ready to begin our security configurations 
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
+	
 	//Interface that helps us to better search the user to apply the rules, it is passed through the 
-	//AuthenticationManagerBuilder class
+	//AuthenticationManagerBuilder class. We have to implement this interface in our UserDao model
 	@Autowired
 	UserDetailsService users;
-	
+		
 	//Overload of the configure method thats receive a AuthenticationManagerBuilder that allow us associate
 	//a new UserDetailService in our Spring Security
 	@Override
@@ -31,7 +31,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	//The HttpSecurity object is the start point to customize our authentication and authorization rules.
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
 		//The invocation order is very important, first we do the restrictions, later we release all
 		http.authorizeRequests()
 		//It says, beside user is logged, he has to have ADMIN role to have the permission
@@ -46,5 +45,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.anyRequest().authenticated()
 		.and().formLogin();
 	}
-	
 }
