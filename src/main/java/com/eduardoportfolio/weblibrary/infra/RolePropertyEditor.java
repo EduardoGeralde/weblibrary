@@ -6,6 +6,7 @@ import java.beans.PropertyEditorSupport;
 import com.eduardoportfolio.weblibrary.dao.RoleDao;
 import com.eduardoportfolio.weblibrary.models.Role;
 
+//Class that deal and treat the data from the view (userForm) passed by checkboxes
 public class RolePropertyEditor extends PropertyEditorSupport {
 	
 	private RoleDao roleDao;

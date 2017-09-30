@@ -28,6 +28,7 @@ import com.eduardoportfolio.weblibrary.models.User;
 @Scope(WebApplicationContext.SCOPE_REQUEST)
 public class UserController {
 	
+	//Treat the Data from the view to the controller, passed by the checkboxes
 	@InitBinder
 	public void initBinder(WebDataBinder binder){
 		binder.registerCustomEditor(Role.class, new RolePropertyEditor(roleDao));
