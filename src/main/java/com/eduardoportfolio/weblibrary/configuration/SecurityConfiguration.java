@@ -39,6 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.antMatchers("/register/**").permitAll()
 		//If the address /products is accessed through POST method, the access is only released with ADMIN role
 		.antMatchers(HttpMethod.POST, "/products").hasRole("ADMIN")
+		.antMatchers(HttpMethod.POST, "/register").hasRole("ADMIN")
 		//Here we say, all the others address that begin with /products/ is 
 		.antMatchers("/products/**").permitAll()
 		//All the rest is only released with user authenticated
