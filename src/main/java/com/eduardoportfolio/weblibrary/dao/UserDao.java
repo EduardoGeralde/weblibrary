@@ -37,9 +37,7 @@ public class UserDao implements UserDetailsService {
 	}
 	
 	public void save(User user){
-		BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
-		String encodedPassword = bc.encode(user.getPassword());
-		user.setPassword(encodedPassword);
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		manager.persist(user);
 	}
 	
