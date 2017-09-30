@@ -1,3 +1,4 @@
+
 package com.eduardoportfolio.weblibrary.controllers;
 
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,4 @@ public class HomeController {
 		System.out.println("loading products");
 		return "helloworld";
 	}
-
-	
-	
 }
