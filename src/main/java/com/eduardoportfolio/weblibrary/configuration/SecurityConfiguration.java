@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 //Has to be placed above the class that is responsible for effectively controls the access rules. This annotation
 //load another components as well, like SecurityExpressionHandler (Evaluate specific languages of security control)
@@ -46,6 +47,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.anyRequest().authenticated()
 		//With .loginPage, we redirect to our login page. We need call permitall() to tell that  this address is
 		//allowed for everyone
-		.and().formLogin().loginPage("/login").permitAll();
+		.and().formLogin().loginPage("/login").permitAll()
+		//For default, the Spring Security only allow that the logout has to be made by Post Method. It is to
+		//force the CSRF token to be passed. We can use logoutRequestMatcher to allow to be accessed by a GET URL 
+		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
 }
