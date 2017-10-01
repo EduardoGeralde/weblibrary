@@ -1,11 +1,11 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
-<%@attribute name="title" required="true" %>
-<%@attribute name="bodyClass" required="true" %>
-<%@attribute name="extraScripts" fragment="true" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@attribute name="extraScripts" fragment="true" %>
+<%@attribute name="title" required="true" %>
+<%@attribute name="bodyClass" required="true" %>
 <!doctype html>
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="pt"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="pt"><![endif]-->
@@ -29,6 +29,8 @@
 
 	<%@include file="/WEB-INF/footer.jsp" %>
 	
+	<jsp:invoke fragment="extraScripts"/>
+	
 </body>
 </html>
-<jsp:invoke fragment="extraScripts"/>
+
