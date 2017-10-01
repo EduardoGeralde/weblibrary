@@ -14,6 +14,6 @@
   <error-page>
   	<error-code>403</error-code>
   	<location>/WEB-INF/403.jsp</location>
-  </error-page>
+  </error-page> 
   
 </web-app>
