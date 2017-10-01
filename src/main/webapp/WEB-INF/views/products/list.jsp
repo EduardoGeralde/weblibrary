@@ -17,7 +17,7 @@
 				<c:forEach items="${products}" var="product">
 					<tr>
 						<td>
-							<a href="${spring:mvcUrl('PC#show').arg(0,product.id).build()}">${product.title}</a>
+							<a href="${spring:mvcUrl('productShow').arg(0,product.id).build()}">${product.title}</a>
 						</td>
 						<td>
 							<c:forEach items="${product.prices}" var="price">
