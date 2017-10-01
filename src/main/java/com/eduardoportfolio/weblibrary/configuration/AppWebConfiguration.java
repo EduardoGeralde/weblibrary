@@ -20,8 +20,13 @@ import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -40,7 +45,8 @@ import com.google.common.cache.CacheBuilder;
 @EnableCaching
 @ComponentScan(basePackageClasses = {HomeController.class, ProductDao.class, RoleDao.class, UserDao.class,
 																	AmazonFileSaver.class, ShoppingCart.class})
-public class AppWebConfiguration {
+//WebMvcConfigurerAdapter extended to use the addInterceptors method 
+public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 	
 	@Bean
 	//Tells Spring that he has to decide which view resolver to use based in the Accept
@@ -60,11 +66,11 @@ public class AppWebConfiguration {
 	public CustomXMLViewResolver getMarshallingXmlViewResolver() {
 		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
 		marshaller.setClassesToBeBound(Product.class);
-//		XStreamMarshaller marshaller = new XStreamMarshaller();
-//		HashMap<String, Class<?>> keys = new HashMap<String,Class<?>>();
-//		keys.put("product", Product.class);
-//		keys.put("price", Price.class);
-//		marshaller.setAliases(keys);
+		//XStreamMarshaller marshaller = new XStreamMarshaller();
+		//HashMap<String, Class<?>> keys = new HashMap<String,Class<?>>();
+		//keys.put("product", Product.class);
+		//keys.put("price", Price.class);
+		//marshaller.setAliases(keys);
 		return new CustomXMLViewResolver(marshaller);
 	}
 	
@@ -135,4 +141,29 @@ public class AppWebConfiguration {
 		cacheManager.setCacheBuilder(builder);
 		return cacheManager;
 	}
+
+	//Override method from WebMvcConfigurerAdapter, to change idiom, based on the passed parameters
+	// /products?locale=pt or /products?locale=en_US passed in a link on header.jsp
+	//The LocaleChangeInterceptor verify if it was used a locale parameter in the request, if positive, it change
+	//the idiom automatically
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new LocaleChangeInterceptor());
+	}
+	
+	//Returns a localeResolver implementation of this interface, and we use the strategy to hold the preferred
+	//language in a cookie (could be SessionLocaleResolver)
+	@Bean
+	public LocaleResolver localeResolver(){
+		return new CookieLocaleResolver();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
