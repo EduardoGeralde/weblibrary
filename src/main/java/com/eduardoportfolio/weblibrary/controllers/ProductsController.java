@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -78,7 +79,7 @@ public class ProductsController {
 	}
 	*/
 	
-	@RequestMapping("/{id}") //We can pass primitive types, String, Date, Calendar
+	@RequestMapping(value="/{id}", name="productShow") //We can pass primitive types, String, Date, Calendar
 	//@RequestMapping("/{categoryId}/{productId}")
 	//public ModelAndView show(@PathVariable("categoryId") Integer categoryId, @PathVariable("productId") Integer id){
 	public ModelAndView show(@PathVariable("id") Integer id){
