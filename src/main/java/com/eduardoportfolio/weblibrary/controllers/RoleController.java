@@ -26,7 +26,7 @@ public class RoleController {
 	@Autowired
 	RoleDao roleDao;
 	
-	@RequestMapping("roleForm")
+	@RequestMapping(value="roleForm", method=RequestMethod.GET, name="roleForm")
 	public ModelAndView roleForm(Role role){
 		ModelAndView modelAndView = new ModelAndView("user/roleForm");
 		modelAndView.addObject("roleList", roleDao.list());
