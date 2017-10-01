@@ -4,7 +4,7 @@
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="customTags"%>
 
@@ -43,8 +43,8 @@
 						</li>
 					</c:forEach>
 				</ul>
-				<input type="submit" class="submit-image icon-basket-alt" alt="Compre agora"
-										title="Compre agora '${product.title}'!" value="comprar"/>
+				<input type="submit" class="submit-image icon-basket-alt" alt="Buy now"
+										title="Buy now '${product.title}'!" value="Buy"/>
 			</form:form>
 		</section>
 
@@ -57,13 +57,13 @@
 				</span>
 			</section>
 			<section class="data product-detail">
-				<h2 class="section-title">Dados do livro:</h2>
+				<h2 class="section-title">About the book:</h2>
 				<p>
-					Número de paginas: <span itemprop="numberOfPages">${product.pages}</span>
+					Number of Pages: <span itemprop="numberOfPages">${product.pages}</span>
 				</p>
 				<p></p>
 				<p>
-					Encontrou um erro? <a href='/submissao-errata' target='_blank'>Submeta uma errata</a>
+					Did you find any error? <a href='/submissao-errata' target='_blank'>Tell us</a>
 				</p>
 			</section>
 		</div>
