@@ -39,7 +39,7 @@ public class UserController {
 	@Autowired
 	RoleDao roleDao;
 
-	@RequestMapping("userForm")
+	@RequestMapping(value="userForm", name="userForm")
 	public ModelAndView userForm(User user) {
 		ModelAndView modelAndView = new ModelAndView("user/userForm");
 		modelAndView.addObject("roleList", roleDao.list());
