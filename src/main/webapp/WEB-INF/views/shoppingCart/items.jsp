@@ -59,8 +59,8 @@
 				<tr>
 					<th class="cart-img-col"></th>
 					<th width="65%">Item</th>
-					<th width="10%">Preço</th>
-					<th width="10%">Quantidade</th>
+					<th width="10%">Value</th>
+					<th width="10%">Quantity</th>
 					<th width="10%">Total</th>
 					<th width="5%"></th>
 				</tr>
@@ -79,7 +79,7 @@
 								servletRelativeAction="${spring:mvcUrl('SCC#remove').arg(0,item.product.id).arg(1,item.bookType).build()}">
 								<input type="image"
 									src="//cdn.shopify.com/s/files/1/0155/7645/t/177/assets/excluir.png?58522"
-									alt="Excluir" title="Excluir" />
+									alt="Exclude" title="Exclude" />
 							</form:form>
 						</td>
 					</tr>
@@ -89,7 +89,7 @@
 				<tr>
 					<td colspan="2">
 						<form:form servletRelativeAction="${spring:mvcUrl('PC#checkout').build()}" method="post">
-							<input type="submit" class="checkout" name="checkout" value="Finalizar compra" id="checkout" />
+							<input type="submit" class="checkout" name="checkout" value="CheckOut" id="checkout" />
 						</form:form>
 					</td>
 					<td class="numeric-cell">${shoppingCart.total}</td>
@@ -98,14 +98,14 @@
 			</tfoot>
 		</table>
 
-		<h2>Você já conhece os outros livros da Casa do Código?</h2>
+		<h2>See more titles, and discover all about our books</h2>
 		<ul id="collection" class="related-books">
 			<li class="col-left"><a href="/products/livro-mean"
 				class="block clearfix book-suggest"
 				data-book="Mean: Full stack JavaScript para aplicações web com MongoDB, Express, Angular e Node">
 					<img width="113px" height="160px"
 					src="//cdn.shopify.com/s/files/1/0155/7645/products/cover_compact.jpeg?v=1421258660"
-					alt="Mean: Full stack JavaScript para aplicações web com MongoDB, Express, Angular e Node">
+					alt="Mean: Full stack JavaScript for web applications with MongoDB, Express, Angular e Node">
 			</a></li>
 			<li class="col-right"><a
 				href="/products/livro-certificacao-java-associate"
@@ -113,14 +113,14 @@
 				data-book="Java SE 7 Programmer I: O guia para sua certificação Oracle Certified Associate">
 					<img width="113px" height="160px"
 					src="//cdn.shopify.com/s/files/1/0155/7645/products/certificacao-java-associate-featured_compact.png?v=1415277209"
-					alt="Java SE 7 Programmer I: O guia para sua certificação Oracle Certified Associate">
+					alt="Java SE 7 Programmer I: The way to your Oracle Certified Associate">
 			</a></li>
 			<li class="col-left"><a href="/products/livro-sql-oracle"
 				class="block clearfix book-suggest"
 				data-book="SQL: Uma abordagem para bancos de dados Oracle"> <img
 					width="113px" height="160px"
 					src="//cdn.shopify.com/s/files/1/0155/7645/products/Amazon-SQL-Oracle_compact.jpg?v=1416425806"
-					alt="SQL: Uma abordagem para bancos de dados Oracle">
+					alt="SQL: Sql in Oracle Data Base">
 			</a></li>
 			<li class="col-right"><a
 				href="/products/livro-orientacao-objetos-java"
@@ -128,19 +128,19 @@
 				data-book="Desbravando Java e Orientação a Objetos: Um guia para o iniciante da linguagem">
 					<img width="113px" height="160px"
 					src="//cdn.shopify.com/s/files/1/0155/7645/products/orientacao-objetos-java-featured_compact.png?v=1416402140"
-					alt="Desbravando Java e Orientação a Objetos: Um guia para o iniciante da linguagem">
+					alt="Knowing Java e Objects Oriented: A guide for a beginner">
 			</a></li>
 			<li class="col-left"><a href="/products/livro-android"
 				class="block clearfix book-suggest"
 				data-book="Google Android: crie aplicações para celulares e tablets">
 					<img width="113px" height="160px"
 					src="//cdn.shopify.com/s/files/1/0155/7645/products/android-featured_compact.png?v=1411489561"
-					alt="Google Android: crie aplicações para celulares e tablets">
+					alt="Google Android: build mobile applications">
 			</a></li>
 		</ul>
 
 		<h2>
-			<a href="http://www.casadocodigo.com.br">Veja todos os livros que publicamos!</a>
+			<a href="https://github.com/EduardoGeralde">See all our books !</a>
 		</h2>
 	</section>
 </jsp:body>	
