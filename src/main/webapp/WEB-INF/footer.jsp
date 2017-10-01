@@ -1,45 +1,44 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <footer id="layout-footer">
 		<div class="clearfix container">
 			<nav class="breadcrumbs" itemprop="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#"></nav>
 			<div id="collections-footer">
 				<!-- cdc-footer -->
-				<p class="footer-title">Coleções de Programação</p>
+				<p class="footer-title"><fmt:message key="programming.collection" /></p>
 				<ul class="footer-text-links">
-					<li><a href="/collections/livros-de-java">Java</a></li>
-					<li><a href="/collections/livros-desenvolvimento-web">Desenvolvimento Web</a></li>
-					<li><a href="/collections/livros-de-mobile">Mobile</a></li>
-					<li><a href="/collections/games">Games</a></li>
-					<li><a href="/collections/livros-de-front-end">Front End</a></li>
+					<li><a href="https://github.com/EduardoGeralde"><fmt:message key="programming.collection.java" /></a></li>
+					<li><a href="https://github.com/EduardoGeralde"><fmt:message key="programming.collection.web" /></a></li>
+					<li><a href="https://github.com/EduardoGeralde"><fmt:message key="programming.collection.mobile" /></a></li>
+					<li><a href="https://github.com/EduardoGeralde"><fmt:message key="programming.collection.games" /></a></li>
+					<li><a href="https://github.com/EduardoGeralde"><fmt:message key="programming.collection.frontEnd" /></a></li>
 				</ul>
-				<p class="footer-title">Outros Assuntos</p>
+				<p class="footer-title"><fmt:message key="another.subjects" /></p>
 				<ul class="footer-text-links">
-					<li><a href="/collections/livros-de-agile">Agile</a></li>
-					<li><a href="/collections/outros">e outros...</a></li>
+					<li><a href="https://github.com/EduardoGeralde"><fmt:message key="programming.collection.agile" /></a></li>
+					<li><a href="https://github.com/EduardoGeralde"><fmt:message key="programming.collection.others" /></a></li>
 				</ul>
 			</div>
 			<div id="social-footer">
 				<!-- books-footer -->
-				<p class="footer-title">Links da Casa do Código</p>
+				<p class="footer-title"><fmt:message key="links.publicator" /></p>
 				<ul class="footer-text-links">
-					<li><a href="http://livros.casadocodigo.com.br" rel="nofollow">Meus E-books</a></li>
-					<li><a href="/pages/sobre-a-casa-do-codigo">Sobre a Casa do Código</a></li>
-					<li><a href="/pages/perguntas-frequentes">Perguntas Frequentes</a></li>
-					<li><a href="https://www.caelum.com.br">Caelum - Ensino e Inovação</a></li>
-					<li><a href="http://www.codecrushing.com/" rel="nofollow">Code Crushing</a></li>
+					<li><a href="https://github.com/EduardoGeralde" rel="nofollow"><fmt:message key="links.publicator.myEbooks" /></a></li>
+					<li><a href="https://github.com/EduardoGeralde"><fmt:message key="links.publicator.about" /></a></li>
+					<li><a href="https://github.com/EduardoGeralde"><fmt:message key="links.publicator.frequentQuestions" /></a></li>
 				</ul>
-				<p class="footer-title">Redes Sociais</p>
+				<p class="footer-title"><fmt:message key="social.links" /></p>
 				<ul>
 					<li class="social-links">
-						<a href="http://www.twitter.com/casadocodigo" target="_blank" 
+						<a href="https://github.com/EduardoGeralde" target="_blank" 
 																		id="twitter" rel="nofollow">Facebook</a>
- 						<a href="http://www.facebook.com/casadocodigo" target="_blank" 
+ 						<a href="https://github.com/EduardoGeralde" target="_blank" 
  																		id="facebook" rel="nofollow">Twitter</a>
  					</li>
 				</ul>
 			</div>
 			<div id="newsletter-footer">
 				<!-- social-footer -->
-				<p class="footer-title">Receba as Novidades e Lançamentos</p>
+				<p class="footer-title"><fmt:message key="receive.news" /></p>
 				<div id="form-newsletter">
 					<form
 						action="https://docs.google.com/spreadsheet/formResponse?formkey=dFhxZ2tDalFiclU4T2FLZVY4UXVUc2c6MQ&embedded=true&ifq"
@@ -49,18 +48,17 @@
 								<input type="hidden" name="pageNumber" value="0">
 								<input type="hidden" name="backupCache" value=""> 
 								<input type="email" name="entry.0.single" value="" class="ss-q-short"
-																id="entry_0" placeholder="seu@email.com">
+																id="entry_0" placeholder="email@email.com">
 							</li>
 							<li>
-								<input type="submit" name="submit" value="Quero Receber!" 
-																id="submit-newsletter">
+								<input type="submit" name="submit" value="<fmt:message key="want.receive" />" id="submit-newsletter">
 							</li>
 						</ul>
 					</form>
 					<ul>
 						<li class="ie8">
 						<a href="https://docs.google.com/spreadsheet/viewform?formkey=dFhxZ2tDalFiclU4T2FLZVY4UXVUc2c6MQ&ifq"
-												rel="nofollow">Receba as Novidades e Lançamentos</a>
+												rel="nofollow"><fmt:message key="receive.news" /></a>
 						</li>
 					</ul>
 				</div>
