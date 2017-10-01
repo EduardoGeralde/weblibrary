@@ -8,7 +8,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="customTags"%>
 
-<customTags:page bodyClass="" title="">
+<customTags:page bodyClass="showBook" title="${product.title}">
 	<article id="${product.title}" itemscope itemtype="http://schema.org/Book">
 		
 		<header id="product-highlight" class="clearfix">
