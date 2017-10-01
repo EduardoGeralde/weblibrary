@@ -1,5 +1,6 @@
 package com.eduardoportfolio.weblibrary.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -41,6 +42,13 @@ public class ProductDao {
 		String jpql = "select p from Product p join fetch p.prices price where p.id = :id and price.bookType = :bookType";
 		TypedQuery<Product> query = manager.createQuery(jpql, Product.class);
 		query.setParameter("id", id);
+		query.setParameter("bookType", bookType);
+		return query.getSingleResult();
+	}
+	
+	public BigDecimal sumPricesPerType (BookType bookType){
+		String jpql = "select sum(price.value) from Product p join p.prices price where price.bookType = :bookType";
+		TypedQuery<BigDecimal> query = manager.createQuery(jpql, BigDecimal.class);
 		query.setParameter("bookType", bookType);
 		return query.getSingleResult();
 	}
