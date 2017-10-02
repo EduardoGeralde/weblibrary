@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -51,5 +52,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		//For default, the Spring Security only allow that the logout has to be made by Post Method. It is to
 		//force the CSRF token to be passed. We can use logoutRequestMatcher to allow to be accessed by a GET URL 
 		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+	}
+
+	//With this method with WebSecurity object parameter, we can tell Spring Security to ignore
+	//any access to a URL that begins with /resources/**, we made this to access the static resources
+	//together with configureDefaultServletHandling in the AppWebConfiguration.
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/resources/**");
 	}
 }
