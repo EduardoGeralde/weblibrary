@@ -46,7 +46,8 @@ public class SpringServlet extends AbstractAnnotationConfigDispatcherServletInit
 		registration.setMultipartConfig(new MultipartConfigElement(""));
 	}
 	
-	
+	//We set the correctly profile, to run our application in development environment, because the profile "test"
+	//in dataSource is exclusive for test environment
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		super.onStartup(servletContext);
@@ -54,7 +55,9 @@ public class SpringServlet extends AbstractAnnotationConfigDispatcherServletInit
 		servletContext.setInitParameter(AbstractEnvironment.DEFAULT_PROFILES_PROPERTY_NAME, "dev");
 	}
 	
-	
+	//Keep the EntityManager open, so, we don't need to use 'join' with 'fetch' anymore. We have
+	//to plan our queries and leave this Lazy load usage to the last option, because the N+1 queries
+	//problem, because, with this, many queries will be loaded without our control.
 	@Override
 	protected Filter[] getServletFilters() {
 		return new Filter[] { new OpenEntityManagerInViewFilter() };
