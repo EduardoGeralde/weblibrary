@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -157,13 +158,15 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 	public LocaleResolver localeResolver(){
 		return new CookieLocaleResolver();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	//When we invoke enable() method in the DefaultServletHandlerConfigurer class, we tell SpringMvc
+	//that, in the case that he don't resolve the address, he has to delegate the call, to the 
+	//servlet container in use. Without this, when we try to access the static resource by URL, 
+	//that we has allowed the address to the Spring Security in the configure(WebSecurity) method,
+	//he return the status 404, because he try to find a controller with the URL
+	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		// TODO Auto-generated method stub
+		configurer.enable();
+	}
 }
