@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import com.eduardoportfolio.weblibrary.builder.ProductBuilder;
 import com.eduardoportfolio.weblibrary.conf.DataSourceConfigurationTest;
 import com.eduardoportfolio.weblibrary.configuration.JpaConfiguration;
@@ -23,14 +22,15 @@ import com.eduardoportfolio.weblibrary.models.Product;
 @RunWith(SpringJUnit4ClassRunner.class)
 //Tells which classes has to be load
 @ContextConfiguration(classes = {ProductDao.class, JpaConfiguration.class, DataSourceConfigurationTest.class})
+//Set which profile we want the DataSource
 @ActiveProfiles("test")
 public class ProductDaoTest {
 
 	@Autowired
 	private ProductDao productDao;
 	
-	@Transactional
 	@Test
+	@Transactional
 	public void shouldSumAllPricesOfEachBookPerType(){
 		
 		//Save a list of printed books
