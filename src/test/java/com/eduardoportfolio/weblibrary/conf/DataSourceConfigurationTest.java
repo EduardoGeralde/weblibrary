@@ -13,7 +13,7 @@ public class DataSourceConfigurationTest {
 	public DataSource dataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost/weblibrary_test");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/weblibrary_test");
 		dataSource.setUsername("root");
 		dataSource.setPassword("password");
 		return dataSource;
