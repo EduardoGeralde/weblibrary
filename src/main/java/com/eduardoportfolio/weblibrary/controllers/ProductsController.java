@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -24,6 +25,7 @@ import com.eduardoportfolio.weblibrary.models.Product;
 @Controller
 @Transactional
 @RequestMapping("/products")
+@Scope(WebApplicationContext.SCOPE_REQUEST)
 public class ProductsController {
 	
 	@Autowired
