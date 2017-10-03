@@ -56,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	//With this method with WebSecurity object parameter, we can tell Spring Security to ignore
 	//any access to a URL that begins with /resources/**, we made this to access the static resources
-	//together with configureDefaultServletHandling in the AppWebConfiguration.
+	//together with configureDefaultServletHandling in the AppWeb
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/resources/**");
