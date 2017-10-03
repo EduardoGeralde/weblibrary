@@ -2,6 +2,7 @@ package com.eduardoportfolio.weblibrary.configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.cache.CacheManager;
@@ -15,6 +16,8 @@ import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.client.RestTemplate;
@@ -168,5 +171,20 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter{
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		// TODO Auto-generated method stub
 		configurer.enable();
+	}
+	
+	@Bean
+	public MailSender mailSender(){
+		JavaMailSenderImpl javaMailSenderImpl = new JavaMailSenderImpl();
+		javaMailSenderImpl.setHost("smtp.gmail.com");
+		javaMailSenderImpl.setPassword("password");
+		javaMailSenderImpl.setPort(587);
+		javaMailSenderImpl.setUsername("myLogin");
+		Properties mailProperties = new Properties();
+		mailProperties.put("mail.smtp.auth", true);
+		mailProperties.put("mail.smtp.starttls.enable", true);
+		javaMailSenderImpl.setJavaMailProperties(mailProperties);
+		
+		return javaMailSenderImpl;
 	}
 }
