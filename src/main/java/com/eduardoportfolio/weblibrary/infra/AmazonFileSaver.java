@@ -22,7 +22,7 @@ public class AmazonFileSaver {
 			//We have only to pass the parameters, first the remote folder where we will save the
 			//file (bucket), second is the file name, third is some InputStream implementation
 			//thats really represent the file and fourth some extra informations like, expire file
-			//date and any other specific information of the application
+			//date and any other specific information of the application.
 			s3.putObject("weblibrary", multipartFile.getOriginalFilename(),
 										multipartFile.getInputStream(),
 										new ObjectMetadata());
