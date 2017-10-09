@@ -31,7 +31,7 @@ public class PaymentController {
 	
 	@RequestMapping(value="checkout", method=RequestMethod.POST)
 	//Analog to Runnable, but allow us give a return. @AuthenticationPrincipal, allow receive the
-	//user logged as a parameter
+	//user logged as a parameter.
 	public Callable<ModelAndView> checkout(@AuthenticationPrincipal User user){
 		
 		return() -> {
@@ -41,7 +41,7 @@ public class PaymentController {
 			String uriToPay = "http://book-payment.herokuapp.com/payment";
 			try{
 				String response = restTemplate.postForObject(uriToPay, new PaymentData(total), String.class);
-				sendNewPurchaseMail(user);
+				//sendNewPurchaseMail(user);
 				return new ModelAndView("payment/payment-success");
 			} catch (HttpClientErrorException exception){
 				return new ModelAndView("payment/payment-error");
