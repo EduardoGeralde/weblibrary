@@ -28,7 +28,7 @@ public class RoleDao {
 		return manager.createQuery("select p from Role p", Role.class).getResultList();
 	}
 	
-	//Created to support RolePropertyEditor
+	//Created to support RolePropertyEditor.
 	public Role getRole(String name){
 		TypedQuery<Role> query = manager.createQuery("select p from Role p where p.name = :name", Role.class)
 																					.setParameter("name", name);
