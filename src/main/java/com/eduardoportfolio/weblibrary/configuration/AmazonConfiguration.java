@@ -10,7 +10,7 @@ import com.amazonaws.services.s3.S3ClientOptions;
 
 public class AmazonConfiguration {
 	
-	//In any Amazon integration, we always have to create a object that has the access credentials 
+	//In any Amazon integration, we always have to create a object that has the access credentials
 	@Bean
 	public AmazonS3Client s3Ninja(){
 		AWSCredentials credentials = new BasicAWSCredentials("AKIAIOSFODNN7EXAMPLE",
