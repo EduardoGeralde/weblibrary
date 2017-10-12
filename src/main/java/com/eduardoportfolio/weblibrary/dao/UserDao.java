@@ -24,7 +24,7 @@ public class UserDao implements UserDetailsService {
 		
 		//We don't need to retrieve the password, because we don't want to deal with the hash before make the
 		//query, we just search for the logging, and the Spring will verify is the saved password confers with
-		//the password, passed in the form, 
+		//the password, passed in the form,
 		String jpql = "select u from User u where u.login = :login";
 		
 		List<User> users = manager.createQuery(jpql, User.class)
