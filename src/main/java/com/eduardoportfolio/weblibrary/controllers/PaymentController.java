@@ -31,7 +31,7 @@ public class PaymentController {
 	
 	@RequestMapping(value="checkout", method=RequestMethod.POST)
 	//Analog to Runnable, but allow us give a return. @AuthenticationPrincipal, allow receive the
-	//user logged as a parameter
+	//user logged as a parameter.
 	public Callable<ModelAndView> checkout(@AuthenticationPrincipal User user){
 		
 		return() -> {
