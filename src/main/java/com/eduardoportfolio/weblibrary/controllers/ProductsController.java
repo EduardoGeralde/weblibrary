@@ -43,7 +43,7 @@ public class ProductsController {
 	@RequestMapping(method=RequestMethod.POST, name="saveProduct")
 	//Invalid a certain cache region when a new book is registered, forcing actualization
 	//We can pass an array in the value attribute, and we can actualize an specific or all values setting in
-	//the allEntries attribute.
+	//the allEntries attribute
 	@CacheEvict (value="books", allEntries=true)
 	public ModelAndView save(@Valid Product product,
 								MultipartFile summary,
