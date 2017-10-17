@@ -18,7 +18,7 @@ public class AmazonConfiguration {
 		AmazonS3Client newClient = new AmazonS3Client(credentials,new ClientConfiguration());
 		newClient.setS3ClientOptions(new S3ClientOptions().withPathStyleAccess(true));
 		
-		//we point where our emulator S3 Ninja is running
+		//we point where our emulator S3 Ninja is running.
 		newClient.setEndpoint("http://localhost:9444/s3");
 		
 		return newClient;
