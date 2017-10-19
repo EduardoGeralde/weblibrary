@@ -10,6 +10,13 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
+/**
+ * 
+ * @author Eduardo Geralde Neto
+ * 
+ *
+ */
+
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class ShoppingCart {
