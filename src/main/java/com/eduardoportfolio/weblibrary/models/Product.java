@@ -17,6 +17,13 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+/**
+ * 
+ * @author Eduardo Geralde Neto
+ * 
+ *
+ */
+
 @Entity
 public class Product {
 	
