@@ -2,6 +2,13 @@ package com.eduardoportfolio.weblibrary.models;
 
 import java.math.BigDecimal;
 
+/**
+ * 
+ * @author Eduardo Geralde Neto
+ * 
+ *
+ */
+
 public class PaymentData {
 	
 	private BigDecimal value;
