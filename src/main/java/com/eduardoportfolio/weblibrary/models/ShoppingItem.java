@@ -3,6 +3,13 @@ package com.eduardoportfolio.weblibrary.models;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
+/**
+ * 
+ * @author Eduardo Geralde Neto
+ * 
+ *
+ */
+
 public class ShoppingItem {
 
 	private Product product;
