@@ -5,6 +5,13 @@ import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+/**
+ * 
+ * @author Eduardo Geralde Neto
+ * 
+ *
+ */
+
 @Embeddable
 public class Price {
 	
